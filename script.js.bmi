@@ -1,0 +1,55 @@
+$(function(){
+  $('#result').click(function(){
+  var weight= $('#weight').val();
+  var height= $('#height').val();
+  if(weight==''){
+    $('.weight-error').show();
+  }else{
+    $('.weight-error').hide();
+  }
+  if(height==''){
+    $('.height-error').show();
+  }else{
+    $('.height-error').hide();
+  }
+  var BMI =weight/height/height
+  if(weight !='' && height !=''){
+    $('#BMI').text('あなたのBMIは'+BMI+'です');
+
+    if(BMI>=40){
+      $('#weight-appropriate').text('あなたは肥満度4です');
+    }else if(BMI>=35 && BMI<40){
+      $('#weight-appropriate').text('あなたは肥満度3です');
+    }else if(BMI>=30 && BMI<35){
+      $('#weight-appropriate').text('あなたは肥満度2です');
+    }else if(BMI>=25 && BMI<30){
+      $('#weight-appropriate').text('あなたは肥満度1です');
+    }else if(BMI>=18.5 && BMI<25){
+      $('#weight-appropriate').text('あなたは普通体重です');
+    }else{
+      $('#weight-appropriate').text('あなたは低体重です');
+    }
+
+    var bestweight = height*height*22-weight
+
+    $('#appropriate').text('適正体重は'+height*height*22+'kgで、あと'+bestweight+'kgです');
+  }else{
+    $('#BMI').text('');
+    $('#weight-appropriate').text('');
+    $('#appropriate').text('');
+  }
+})
+
+$('#clear').click(function(){
+  $('#weight').val('');
+  $('#height').val('');
+  $('#BMI').text('');
+  $('#weight-appropriate').text('');
+  $('#appropriate').text('');
+  $('.weight-error').hide();
+  $('.height-error').hide();
+})
+
+
+
+})
